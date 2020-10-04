@@ -31,7 +31,8 @@ Return an array of two integers denoting the respective comparison points earned
 **Sample Input 0**
 
 ```
-5 6 73 6 10
+5 6 7
+3 6 10
 ```
 **Sample Output 0**
 
@@ -50,7 +51,8 @@ Alice's comparison score is , and Bob's comparison score is. Thus, we return the
 **Sample Input 1**
 
 ```
-17 28 3099 16 8
+17 28 30
+99 16 8
 ```
 **Sample Output 1**
 
