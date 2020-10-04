@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace compare_the_triplets
 {
@@ -6,15 +7,26 @@ namespace compare_the_triplets
     {
         public static void Main(string[] args)
         {
-            string[] tripletAlice = Console.ReadLine().Trim().Split(' ');
-            string[] tripletBob = Console.ReadLine().Trim().Split(' ');  
+            Console.WriteLine("Enter Alice ratings:");
+            string[] tripletAlice = (Console.ReadLine() ?? "").Trim().Split(' ');
+            
+            Console.WriteLine("Enter Bob ratings:");
+            string[] tripletBob = (Console.ReadLine() ?? "").Trim().Split(' ');
 
             Console.WriteLine(CompareTriplets(tripletAlice, tripletBob));
         }
 
         public static string CompareTriplets(string[] tripletAliceTokens, string[] tripletBobTokens)
         {
-            if (tripletAliceTokens == null || tripletAliceTokens.Length == 0 || tripletBobTokens == null || tripletBobTokens.Length == 0)
+            tripletAliceTokens = tripletAliceTokens.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            tripletBobTokens = tripletBobTokens.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            
+            if (tripletAliceTokens == null || 
+                tripletAliceTokens.Length < 3 || 
+                tripletBobTokens == null || 
+                tripletBobTokens.Length < 3 ||
+                tripletAliceTokens.Length != tripletBobTokens.Length
+            )
                 return $"0 0";
 
             int aliceScore = 0;
